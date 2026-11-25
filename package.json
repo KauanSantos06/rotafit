@@ -1,22 +1,19 @@
 {
-  "name": "rotafit",
-  "version": "1.0.0",
-  "main": "index.ts",
-  "dependencies": {
-    "expo": "~58.0.26",
-    "expo-status-bar": "~58.0.5",
-    "react": "19.3.0",
-    "react-native": "0.88.1"
-  },
-  "devDependencies": {
-    "@types/react": "~19.3.0",
-    "typescript": "~6.0.3"
-  },
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "test": "jest && node --test \"supabase/tests/*.test.mjs\"",
+    "test:app": "jest",
+    "test:db": "node --test \"supabase/tests/*.test.mjs\"",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write app src __tests__ supabase/tests"
   },
-  "private": true
+  "jest": {
+    "preset": "jest-expo",
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
+  }
 }
